@@ -62,7 +62,7 @@ set style line 80 lt rgb "#000000"
     set title "Occupation"
     set xlabel "time [a.u.]"
     set ylabel "n"
-    plot "${FILE}" using 1:5 with lines linestyle 1, "${FILE}" using 1:6 with lines linestyle 5
+    plot "${FILE}" using 1:6 with lines linestyle 5
 
 unset multiplot
 
@@ -97,7 +97,7 @@ unset multiplot
     set title "Occupation"
     set xlabel "time [a.u.]"
     set ylabel "n"
-    plot "${FILE}" using 1:5 with lines linestyle 1, "${FILE}" using 1:6 with lines linestyle 5
+    plot "${FILE}" using 1:6 with lines linestyle 5
 
 unset multiplot
 
