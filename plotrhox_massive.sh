@@ -73,7 +73,8 @@ set style line 80 lt rgb "#000000"
 
   set key off
   set xrange[-2.5:2.5]
-  #set logscale x
+  
+  set logscale y
 
   #PNG OUTPUT
   #------------------------------------------
@@ -89,7 +90,7 @@ set style line 80 lt rgb "#000000"
   #   SECOND VIEW
       set term png medium font arial 10
       set title "View 2 ${FILE}"
-      set view 60,0 
+      set view 180,90 
       
       set output "./png/rhox/${FILE}_View2.png" 
       splot "${FILE}" every :${1} using 1:2:3 with lines
@@ -97,7 +98,7 @@ set style line 80 lt rgb "#000000"
   #   THIRD VIEW
       set term png medium font arial 10
       set title "View 3 ${FILE}"
-      set view 0,90
+      set view 90,0
       
       set output "./png/rhox/${FILE}_View3.png" 
       splot "${FILE}" every :${1} using 1:2:3 with lines
