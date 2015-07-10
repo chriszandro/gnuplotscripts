@@ -3,7 +3,7 @@
 mkdir -p ./pdf
 mkdir -p ./png
 
-for FILE in *heatmap.cum; do
+for FILE in *heatmap.enm; do
 
 echo "Processing $FILE for Heatmap"
 gnuplot <<- EOF
@@ -37,7 +37,7 @@ set palette rgb 33,13,10
   set output "./png/${FILE}.png" 
 
     set view map
-    set title "CURRENT Heatmap of File: ${FILE}"
+    set title "Energy Heatmap of File: ${FILE}"
     plot "${FILE}" matrix with image 
 
 
