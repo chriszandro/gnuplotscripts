@@ -1,7 +1,7 @@
 #bash/bin
 
-mkdir -p ./pdf
-mkdir -p ./png
+mkdir -p ./current
+mkdir -p ./current
 
 for FILE in *heatmap.cum; do
 
@@ -34,7 +34,7 @@ set palette rgb 33,13,10
 #PNG OUTPUT
 #------------------------------------------
   set term png medium font arial 8
-  set output "./png/${FILE}.png" 
+  set output "./current/${FILE}.png" 
 
     set view map
     set title "CURRENT Heatmap of File: ${FILE}"

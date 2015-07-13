@@ -1,7 +1,7 @@
 #bash/bin
 
-mkdir -p ./pdf
-mkdir -p ./png
+mkdir -p ./energy
+mkdir -p ./energy
 
 for FILE in *heatmap.enm; do
 
@@ -34,7 +34,7 @@ set palette rgb 33,13,10
 #PNG OUTPUT
 #------------------------------------------
   set term png medium font arial 8
-  set output "./png/${FILE}.png" 
+  set output "./energy/${FILE}.png" 
 
     set view map
     set title "Energy Heatmap of File: ${FILE}"

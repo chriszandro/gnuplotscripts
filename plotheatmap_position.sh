@@ -1,7 +1,7 @@
 #bash/bin
 
-mkdir -p ./pdf
-mkdir -p ./png
+mkdir -p ./position
+mkdir -p ./position
 
 for FILE in *heatmap.pom; do
 
@@ -34,7 +34,7 @@ set palette rgb 33,13,10
 #PNG OUTPUT
 #------------------------------------------
   set term png medium font arial 8
-  set output "./png/${FILE}.png" 
+  set output "./position/${FILE}.png" 
 
     set view map
     set title "POSITION Heatmap of File: ${FILE}"
