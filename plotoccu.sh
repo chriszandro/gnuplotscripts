@@ -33,11 +33,11 @@ set style line 80 lt rgb "#000000"
   set style line 9 lt rgb "#025934" lw 2 pt 9
   set style line 10 lt rgb "#02A9F0" lw 2 pt 9
 
-  set style line 11 lt lc rgb "#F259A0" lw 2 pt 9
-  set style line 12 lt lc rgb "#02F909" lw 2 pt 9
-  set style line 13 lt lc rgb "#C200FF" lw 2 pt 9
-  set style line 14 lt lc rgb "#025934" lw 2 pt 9
-  set style line 15 lt lc rgb "#02A9F0" lw 2 pt 9
+  set style line 11 lt  rgb "#F259A0" lw 2 pt 9
+  set style line 12 lt  rgb "#02F909" lw 2 pt 9
+  set style line 13 lt  rgb "#C200FF" lw 2 pt 9
+  set style line 14 lt  rgb "#025934" lw 2 pt 9
+  set style line 15 lt  rgb "#02A9F0" lw 2 pt 9
 
   #PNG OUTPUT
 #------------------------------------------
