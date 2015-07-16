@@ -98,7 +98,7 @@ unset multiplot
     set title "Occupation"
     set xlabel "Voltage [V]"
     set ylabel "n"
-    plot "${FILE}" using 1:5 with lines linestyle 1, "${FILE}" using 1:6 with lines linestyle 5
+    plot  "${FILE}" using 1:6 with lines linestyle 5
 
 unset multiplot
 
