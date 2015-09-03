@@ -2,8 +2,8 @@
 
 # Prework
 #Create Directories
-mkdir -p ./pdf/rhox
-mkdir -p ./png/rhox
+mkdir -p ./pdf/rhox_small
+mkdir -p ./png/rhox_small
 
 #Console Input
 echo "3D Plotterf rhox files  in Matlab Style"
@@ -73,7 +73,7 @@ set style line 80 lt rgb "#000000"
 
   set key off
   set xrange[-2.5:2.5]
-# set yrange[0:1]
+  set yrange[0:1]
   
 #  set logscale y
 
@@ -85,7 +85,7 @@ set style line 80 lt rgb "#000000"
 
       set title "View 1 of ${FILE}"
       set view 30, 30 
-      set output "./png/rhox/${FILE}_View1.png" 
+      set output "./png/rhox_small/${FILE}_View1.png" 
       splot "${FILE}" every :100 using 1:2:3 with lines
 
   #   SECOND VIEW
@@ -93,7 +93,7 @@ set style line 80 lt rgb "#000000"
       set title "View 2 ${FILE}"
       set view 180,90 
       
-      set output "./png/rhox/${FILE}_View2.png" 
+      set output "./png/rhox_small/${FILE}_View2.png" 
       splot "${FILE}" every :100 using 1:2:3 with lines
        
   #   THIRD VIEW
@@ -101,7 +101,7 @@ set style line 80 lt rgb "#000000"
       set title "View 3 ${FILE}"
       set view 90,0
       
-      set output "./png/rhox/${FILE}_View3.png" 
+      set output "./png/rhox_small/${FILE}_View3.png" 
       splot "${FILE}" every :100 using 1:2:3 with lines
 
     
