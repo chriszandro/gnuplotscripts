@@ -67,7 +67,7 @@ set style line 80 lt rgb "#000000"
     set ylabel "Energy [eV]"
     
 
-plot  "${FILE}" using 1:4 with lines linestyle 1 title "Unoccupied", "${FILE}" using 1:5 with lines linestyle 2 title "Occupied", for[i=8:22] "${FILE}" using 1:i with lines title "State Nr.".(i-5)
+plot  "${FILE}" using 1:4 with lines linestyle 1 title "Unoccupied", "${FILE}" using 1:5 with lines linestyle 2 title "Occupied", for[i=8:22] "${FILE}" using 1:i with lines title "State Nr.".(i-5), "${FILE}" using 1:6 with lines linestyle 1 title "Switch"
 
 #PDF OUTPUT
 #----------------------------------------------------    
