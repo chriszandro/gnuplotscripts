@@ -51,7 +51,7 @@ set style line 80 lt rgb "#000000"
   set style line 12 lt rgb "#3ce830" lw 2 pt 6
   set style line 13 lt rgb "#00A000" lw 2 pt 6
 
-  set xrange[-4:4]
+  set xrange[-2:2]
   set yrange[-0.05:1]  
 
 #PNG OUTPUT
