@@ -32,8 +32,8 @@ set style line 80 lt rgb "#000000"
 
 #PNG OUTPUT
 #------------------------------------------
-  set term png medium font arial 8
-#  set term pngcairo font "Arial, 10"
+ # set term png medium font arial 8
+  set term pngcairo font "Arial, 10"
 
   set output "./png/${FILE}.png" 
   set size 2,2 
@@ -69,38 +69,37 @@ unset multiplot
 #PDF OUTPUT
 #----------------------------------------------------    
 #    set term pdf font "Arial,4"
-    set term pdfcairo font "Arial,10"
+#   set term pdfcairo font "Arial,10"
+#   set output "./pdf/${FILE}.pdf" 
+#   set size 11,8.5
+#    
+# set multiplot layout 2,2 rowsfirst title "${FILE}"
 
-    set output "./pdf/${FILE}.pdf" 
-    set size 11,8.5
-     
-  set multiplot layout 2,2 rowsfirst title "${FILE}"
+#   # --- GRAPH Current
+#   set title "Current"
+#   set xlabel "Voltage [V]"
+#   set ylabel "Current [muA ]"
+#   plot "${FILE}" using 1:3 with lines linestyle 2
 
-    # --- GRAPH Current
-    set title "Current"
-    set xlabel "Voltage [V]"
-    set ylabel "Current [muA ]"
-    plot "${FILE}" using 1:3 with lines linestyle 2
+#   # --- GRAPH Position
+#   set title "Position"
+#   set xlabel "Voltage [V]"
+#   set ylabel "Position [Bohr Radius]"
+#   plot "${FILE}" using 1:2 with lines linestyle 3
 
-    # --- GRAPH Position
-    set title "Position"
-    set xlabel "Voltage [V]"
-    set ylabel "Position [Bohr Radius]"
-    plot "${FILE}" using 1:2 with lines linestyle 3
+#   # --- GRAPH 3
+#   set title "Energy"
+#   set xlabel "Voltage [V]"
+#   set ylabel "Energy [eV]"
+#   plot "${FILE}" using 1:4 with lines linestyle 4
 
-    # --- GRAPH 3
-    set title "Energy"
-    set xlabel "Voltage [V]"
-    set ylabel "Energy [eV]"
-    plot "${FILE}" using 1:4 with lines linestyle 4
+#   # --- GRAPH d
+#   set title "Occupation"
+#   set xlabel "Voltage [V]"
+#   set ylabel "n"
+#   plot  "${FILE}" using 1:6 with lines linestyle 5
 
-    # --- GRAPH d
-    set title "Occupation"
-    set xlabel "Voltage [V]"
-    set ylabel "n"
-    plot  "${FILE}" using 1:6 with lines linestyle 5
-
-unset multiplot
+#nset multiplot
 
 
 EOF
