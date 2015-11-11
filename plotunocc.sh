@@ -1,6 +1,6 @@
 #bash/bin
 
-for FILE in *.p1; do
+for FILE in *.p0; do
 mkdir -p ./png/
 
 echo "Processing $FILE"
