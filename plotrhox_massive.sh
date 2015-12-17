@@ -79,7 +79,7 @@ set style line 80 lt rgb "#000000"
   set view ${xrot}, ${yrot}
   set key off
 
-  #set logscale x
+  set logscale y
 
 #PNG OUTPUT
 #------------------------------------------
@@ -89,14 +89,5 @@ set style line 80 lt rgb "#000000"
    
     splot "${FILE}" every :${resolution} using 1:2:3 with lines
 
-     
-#PDF OUTPUT
-#----------------------------------------------------    
-#    set term pdf font "Arial,4"
-     set term pdfcairo font "Arial,10"
-     set output "./pdf/rhox/evo_${FILE}.pdf" 
-  
-     replot 
-  
 EOF
 done
