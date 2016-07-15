@@ -1,7 +1,6 @@
 #bash/bin
 
 mkdir -p ./current
-mkdir -p ./current
 
 for FILE in *heatmap.cum; do
 
@@ -37,7 +36,7 @@ set palette rgb 33,13,10
   set output "./current/${FILE}.png" 
 
     set view map
-    set title "CURRENT Heatmap of File: ${FILE}"
+    set title "POSITION Heatmap of File: ${FILE}"
     plot "${FILE}" matrix with image 
 
 

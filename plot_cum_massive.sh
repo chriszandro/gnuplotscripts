@@ -6,15 +6,13 @@ mkdir -p ./png/rhox
 
 #Console Input
 echo "3D Plotter in Matlab Style"
-read -e -p "File for 3D plot:  " FILE
+echo " "
+
 read -e -p "Resultion: " resolution
 read -e -p "xrot : " xrot 
 read -e -p "yrot: " yrot 
 
-echo " "
-
-read -e -p "Resultion: " resolution
-
+for FILE in *.cum; do
 echo "Processing: ${FILE}"
 
 gnuplot <<- EOF
@@ -69,17 +67,19 @@ set style line 80 lt rgb "#000000"
 
 # Labels
 
-  set title "Density Matrix in Position Representation"
+  set title "3D Heatmap"
  
   #X Labels
-  set xlabel "Position x [a.u.]"
-  set ylabel "Voltage [V]"
-  set zlabel "rhoxx"
+  set xlabel "Gate [a.u.]"
+  set ylabel "Current [V]"
+  set zlabel "Current V(x)"
 
+#  set xrange[-1.5:1.5]
+#  set yrange[0:1.5]
   set view ${xrot}, ${yrot}
   set key off
- 
-  #set logscale x
+
+# set logscale y
 
 #PNG OUTPUT
 #------------------------------------------
@@ -89,13 +89,5 @@ set style line 80 lt rgb "#000000"
    
     splot "${FILE}" every :${resolution} using 1:2:3 with lines
 
-     
-#PDF OUTPUT
-#----------------------------------------------------    
-#    set term pdf font "Arial,4"
-     set term pdfcairo font "Arial,10"
-     set output "./pdf/rhox/evo_${FILE}.pdf" 
-  
-     replot 
-  
 EOF
+done

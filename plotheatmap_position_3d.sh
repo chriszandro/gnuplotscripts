@@ -1,20 +1,17 @@
 #bash/bin
 
 #Create Directories
-mkdir -p ./pdf/rhox
-mkdir -p ./png/rhox
+mkdir -p ./position3d
 
 #Console Input
 echo "3D Plotter in Matlab Style"
-read -e -p "File for 3D plot:  " FILE
+echo " "
+
 read -e -p "Resultion: " resolution
 read -e -p "xrot : " xrot 
 read -e -p "yrot: " yrot 
 
-echo " "
-
-read -e -p "Resultion: " resolution
-
+for FILE in *xyz.pom; do
 echo "Processing: ${FILE}"
 
 gnuplot <<- EOF
@@ -69,33 +66,25 @@ set style line 80 lt rgb "#000000"
 
 # Labels
 
-  set title "Density Matrix in Position Representation"
- 
   #X Labels
-  set xlabel "Position x [a.u.]"
-  set ylabel "Voltage [V]"
-  set zlabel "rhoxx"
+  set xlabel "Bias Voltage U [V]"
+  set ylabel "Gate Voltage V [V]"
+  set zlabel ""
 
+# set xrange[-1.5:1.5]
+  set yrange[1.5:2.5]
   set view ${xrot}, ${yrot}
   set key off
- 
-  #set logscale x
+
+#set logscale y
 
 #PNG OUTPUT
 #------------------------------------------
 #   set term png medium font arial 8
     set term pngcairo font "Arial, 10"
-    set output "./png/rhox/rhox_${FILE}.png" 
+    set output "./position3d/rhox_${FILE}.png" 
    
     splot "${FILE}" every :${resolution} using 1:2:3 with lines
 
-     
-#PDF OUTPUT
-#----------------------------------------------------    
-#    set term pdf font "Arial,4"
-     set term pdfcairo font "Arial,10"
-     set output "./pdf/rhox/evo_${FILE}.pdf" 
-  
-     replot 
-  
 EOF
+done

@@ -1,10 +1,12 @@
 #bash/bin
 
-for FILE in *.sub; do
-mkdir -p ./sub/
+for FILE in *.p1; do
+mkdir -p ./png/
 
 echo "Processing $FILE"
 gnuplot <<- EOF
+
+set logscale x
 
 set style line 80 lt rgb "#000000"
 
@@ -39,24 +41,21 @@ set style line 80 lt rgb "#000000"
   set style line 14 lt  rgb "#025934" lw 2 pt 9
   set style line 15 lt  rgb "#02A9F0" lw 2 pt 9
 
- set logscale y
- set yrange[0.1:1.2]
+  set logscale x 
+  set logscale y
 
   #PNG OUTPUT
 #------------------------------------------
-#  set term png medium font arial 10
-  set term pngcairo font "Arial, 10"
-  set output "./sub/${FILE}.png" 
-  s(x,y) = sqrt(x*x+y*y)
-  t(x,y) = atan(x/y)
+  set term pngcairo dashed font "Arial, 10" 
+  set output "./png/${FILE}.png" 
+  set key top left
   set title "System ${FILE}"
   
     # --- GRAPH System
     set title "${FILE}"
     set xlabel "Voltage [V]"
     set ylabel "Occupation"
-    plot "${FILE}" using 1:2 with lines linestyle 1 title "Population p1", "${FILE}" using 1:3 with lines linestyle 2 title "Population p2", "${FILE}" using 1:4 with lines linestyle 3 title "Real Coherence rho12", "${FILE}" using 1:5 with lines linestyle 4 title "Complex Coherence rho12",  "${FILE}" using 1:s(4,5) with lines linestyle 6 title "Betrag", "${FILE}" using 1:(5/4) with lines linestyle 7 title "winkel"
-
+    plot for[i=2:15] "${FILE}" using 1:i every 1 with lines title "Nr.".(i-1)
 
 EOF
 done

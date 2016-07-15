@@ -1,7 +1,7 @@
 #bash/bin
 
-for FILE in *.sub; do
-mkdir -p ./sub/
+for FILE in *.p1; do
+mkdir -p ./occupation/
 
 echo "Processing $FILE"
 gnuplot <<- EOF
@@ -39,24 +39,27 @@ set style line 80 lt rgb "#000000"
   set style line 14 lt  rgb "#025934" lw 2 pt 9
   set style line 15 lt  rgb "#02A9F0" lw 2 pt 9
 
- set logscale y
- set yrange[0.1:1.2]
+  set logscale y 
 
   #PNG OUTPUT
 #------------------------------------------
-#  set term png medium font arial 10
-  set term pngcairo font "Arial, 10"
-  set output "./sub/${FILE}.png" 
-  s(x,y) = sqrt(x*x+y*y)
-  t(x,y) = atan(x/y)
-  set title "System ${FILE}"
-  
+  set terminal pngcairo enhanced dashed  font 'Arial, 8'
+  set output "./occupation/${FILE}.png" 
+  set xtics (-0.6,0.695,4.61,2.0,3.3,5.95)
+  set grid xtics
+# set xrange[0:2.5]
+  set yrange[0.001:1]
+
+x0=NaN
+y0=NaN
+
+ set title "System ${FILE}"
+  f(x) = x - 2.0 
     # --- GRAPH System
     set title "${FILE}"
     set xlabel "Voltage [V]"
     set ylabel "Occupation"
-    plot "${FILE}" using 1:2 with lines linestyle 1 title "Population p1", "${FILE}" using 1:3 with lines linestyle 2 title "Population p2", "${FILE}" using 1:4 with lines linestyle 3 title "Real Coherence rho12", "${FILE}" using 1:5 with lines linestyle 4 title "Complex Coherence rho12",  "${FILE}" using 1:s(4,5) with lines linestyle 6 title "Betrag", "${FILE}" using 1:(5/4) with lines linestyle 7 title "winkel"
-
+    plot "${FILE}" using (dx=column(1)-x0,x0=column(1),1-dx/2):(dy=$2-y0,y0=$2,dy/dx) with lines title "State Nr.".(2-1)
 
 EOF
 done

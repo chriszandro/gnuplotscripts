@@ -29,23 +29,25 @@ set style line 80 lt rgb "#000000"
   set style line 4 lt rgb "#F25900" lw 2 pt 9
   set style line 5 lt rgb "#F25900" lw 1 pt 4
 
- 
+
 #PNG OUTPUT
 #------------------------------------------
  # set term png medium font arial 8
   set term pngcairo font "Arial, 10"
 
-  set output "./png/${FILE}.png" 
+  set output "./png/${FILE}_diode.png" 
   set size 2,2 
 
   set multiplot layout 2,2 rowsfirst title "${FILE}" 
-# set logscale y
+  set yrange [0.01:1.0] 
+ set logscale y
     # --- GRAPH Current
     set title "Current"
     set xlabel "Voltage [V]"
     set ylabel "Current [muA ]"
-    plot "${FILE}" using 1:3 with lines linestyle 2 
-# unset logscale y
+    plot "${FILE}" using 1:(x=column(3), abs(x)) with lines linestyle 2 
+ unset logscale y
+ set autoscale
     # --- GRAPH Position
     set title "Position"
     set xlabel "Voltage [V]"

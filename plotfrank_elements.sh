@@ -3,7 +3,7 @@
 mkdir -p ./frank
 mkdir -p ./frank
 
-for FILE in *.cou; do
+for FILE in *.frank; do
 
 echo "Processing $FILE for Frank-Condon"
 gnuplot <<- EOF
@@ -28,20 +28,27 @@ gnuplot <<- EOF
 # set style line 4 lt rgb "#F25900" lw 2 pt 9
 # set style line 5 lt rgb "#F25900" lw 1 pt 4
 
-#set logscale cb
+set logscale y
 
 #PNG OUTPUT
 #------------------------------------------
-  set term png medium font arial 10
-  set output "./frank/${FILE}.png" 
+  set terminal pngcairo enhanced dashed  font 'Arial, 8'
+
+
+  set xtics (-0.6,0.695,4.61,2.0,3.3,5.95)
+  set grid xtics
 
 set key bottom right
 set palette rgb 33,13,10
 
-set view map
-set title "Franck-Condon of File: ${FILE}"
-plot "${FILE}" matrix with image 
+#set yrange[0.001:1.00]
+#set xrange[2.50:3.00]
 
+set output "./frank/localized_${FILE}.png" 
+plot  for[i=2:7] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
+
+set output "./frank/DELOCAL_${FILE}.png" 
+plot  for[i=7:12] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
 
 EOF
 done

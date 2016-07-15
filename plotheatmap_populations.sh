@@ -1,11 +1,10 @@
 #bash/bin
 
-mkdir -p ./frank
-mkdir -p ./frank
+mkdir -p ./populations
 
-for FILE in *.cou; do
+for FILE in *state.pop; do
 
-echo "Processing $FILE for Frank-Condon"
+echo "Processing $FILE for Heatmap"
 gnuplot <<- EOF
 
 #set style line 80 lt rgb "#000000"
@@ -20,6 +19,7 @@ gnuplot <<- EOF
 
 #Legend
   
+  set key bottom right
 #  set key off
 
 # set style line 1 lt rgb "#A00000" lw 2 pt 1
@@ -28,19 +28,16 @@ gnuplot <<- EOF
 # set style line 4 lt rgb "#F25900" lw 2 pt 9
 # set style line 5 lt rgb "#F25900" lw 1 pt 4
 
-#set logscale cb
+set palette rgb 33,13,10
 
 #PNG OUTPUT
 #------------------------------------------
-  set term png medium font arial 10
-  set output "./frank/${FILE}.png" 
+  set term png medium font arial 8
+  set output "./populations/${FILE}.png" 
 
-set key bottom right
-set palette rgb 33,13,10
-
-set view map
-set title "Franck-Condon of File: ${FILE}"
-plot "${FILE}" matrix with image 
+    set view map
+    set title "Populations Heatmap of File: ${FILE}"
+    plot "${FILE}" matrix with image 
 
 
 EOF

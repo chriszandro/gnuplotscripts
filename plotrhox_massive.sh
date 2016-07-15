@@ -74,12 +74,12 @@ set style line 80 lt rgb "#000000"
   set ylabel "Voltage [V]"
   set zlabel "Potential V(x)"
 
-#  set xrange[-1.5:1.5]
-#  set yrange[0:1.5]
+# set xrange[-1.5:1.5]
+# set yrange[1:1e6]
   set view ${xrot}, ${yrot}
   set key off
 
-  set logscale y
+#set logscale y
 
 #PNG OUTPUT
 #------------------------------------------
