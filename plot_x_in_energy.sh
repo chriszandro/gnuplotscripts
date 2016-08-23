@@ -17,9 +17,10 @@
     #!****************************************************************************************************
 
 #Creating Folders if ncessary
-mkdir -p ./png/wave/
+mkdir -p ./png/xmatrix
 
-for FILE in *.wave; do
+
+for FILE in *.xmatrix; do
 
 echo "Processing $FILE"
 gnuplot <<- EOF
@@ -55,38 +56,21 @@ set style line 80 lt rgb "#000000"
 #------------------------------------------
   set terminal pngcairo enhanced dashed  font 'Arial, 8'
   set title "States for ${FILE}"
-  
-  
-    # --- GRAPH System
-    set title "${FILE}"
-    set xlabel "Gate"
-    set ylabel "Half Side"
-    
-set output "./png/wave/States_${FILE}.png" 
-set xrange[3.25:3.35]
-set yrange[0.25:0.55]
-plot  for[i=6:15] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
+ 
+  set xtics (-0.6,0.695,4.61,2.0,3.3,5.95)
+  set grid xtics
 
-reset
+set key bottom right
+set palette rgb 33,13,10
 
-set output "./png/wave/States_${FILE}_localized.png" 
-
-set logscale y
-unset yrange
-unset xrange
-#et yrange[0.001:1.00]
+#set yrange[0.001:1.00]
 #set xrange[2.50:3.00]
-plot  for[i=2:9] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
-unset logscale y
 
-set output "./pngwave/States_${FILE}_symmetric.png" 
-set xrange[1.90:2.10]
-set yrange[0.25:0.55]
-plot  for[i=8:15] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
+set output "./png/xmatrix/localized_${FILE}.png" 
+plot  for[i=2:7] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
 
-set autoscale x
-set autoscale y
-set output "./png/wave/States_${FILE}_autoscale.png" 
-replot
+set output "./png/xmatrix/DELOCAL_${FILE}.png" 
+plot  for[i=7:12] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
+
 EOF
 done

@@ -1,7 +1,7 @@
 #bash/bin
 
-mkdir -p ./frank
-mkdir -p ./frank
+mkdir -p ./frank/localized
+mkdir -p ./frank/delocalized
 
 for FILE in *.frank; do
 
@@ -44,10 +44,10 @@ set palette rgb 33,13,10
 #set yrange[0.001:1.00]
 #set xrange[2.50:3.00]
 
-set output "./frank/localized_${FILE}.png" 
+set output "./frank/localized/localized_${FILE}.png" 
 plot  for[i=2:7] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
 
-set output "./frank/DELOCAL_${FILE}.png" 
+set output "./frank/delocalized/DELOCAL_${FILE}.png" 
 plot  for[i=7:12] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
 
 EOF

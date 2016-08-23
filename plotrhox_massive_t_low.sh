@@ -74,9 +74,8 @@ set style line 80 lt rgb "#000000"
   set ylabel "Time [fs]"
   set zlabel "Potential V(x)"
 
-  #set xrange[-1.5:1.5]
-  #set yrange[1e2:1e6]
-
+#  set xrange[-1.5:1.5]
+  set yrange[1e2:1e6]
   set view ${xrot}, ${yrot}
   set key off
 
@@ -85,7 +84,7 @@ set style line 80 lt rgb "#000000"
 #PNG OUTPUT
 #------------------------------------------
     set term pdfcairo font "Arial, 12" size 3,3
-    set output "/home/hpc/mpet/mpet07/Dropbox/PHD/paper2/pics/HIGH_rhox_${FILE}.pdf"
+    set output "/home/hpc/mpet/mpet07/Dropbox/PHD/paper2/pics/LOW_rhox_${FILE}.pdf"
 
     splot "${FILE}" every :${resolution} using 1:2:3 with lines
 

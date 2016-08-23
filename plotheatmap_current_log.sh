@@ -30,12 +30,13 @@ gnuplot <<- EOF
 
 set palette rgb 33,13,10
 
-set cbrange[0:0.8]
+set logscale cb 
+set cbrange[0.001:1.0]
 
 #PNG OUTPUT
 #------------------------------------------
   set term png medium font arial 8
-  set output "./current/${FILE}.png" 
+  set output "./current/${FILE}_log.png" 
 
     set view map
     set title "POSITION Heatmap of File: ${FILE}"

@@ -28,7 +28,7 @@ gnuplot <<- EOF
 # set style line 3 lt rgb "#5060D0" lw 2 pt 2
 # set style line 4 lt rgb "#F25900" lw 2 pt 9
 # set style line 5 lt rgb "#F25900" lw 1 pt 4
-
+set cbrange[-0.85:0.85]
 set palette rgb 33,13,10
 
 #PNG OUTPUT

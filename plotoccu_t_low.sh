@@ -55,7 +55,7 @@ set style line 80 lt rgb "#000000"
     set title "${FILE}"
     set xlabel "Voltage [V]"
     set ylabel "Occupation"
-    plot for[i=2:15] "${FILE}" using 1:i every 1 with lines title "Nr.".(i-1)
+    plot for[i=2:10] "${FILE}" using 1:i every 10 with lines title "Nr.".(i-1)
 
 EOF
 done
