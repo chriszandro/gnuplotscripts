@@ -13,7 +13,7 @@
     #! Column 5                : Potential occupied in eV
     #! Column 6                : Switch
     #! Column 7                :Gate
-    #! Column 8-(8+number_wave): Wave
+    #! Column >8               : Wave
     #!****************************************************************************************************
 
 #Creating Folders if ncessary
@@ -63,8 +63,6 @@ set style line 80 lt rgb "#000000"
     set ylabel "Half Side"
     
 set output "./png/wave/States_${FILE}.png" 
-set xrange[3.25:3.35]
-set yrange[0.25:0.55]
 plot  for[i=6:15] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
 
 reset

@@ -34,7 +34,6 @@ set logscale y
 #------------------------------------------
   set terminal pngcairo enhanced dashed  font 'Arial, 8'
 
-
   set xtics (-0.6,0.695,4.61,2.0,3.3,5.95)
   set grid xtics
 

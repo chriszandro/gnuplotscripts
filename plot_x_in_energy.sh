@@ -17,8 +17,11 @@
     #!****************************************************************************************************
 
 #Creating Folders if ncessary
-mkdir -p ./png/xmatrix
+mkdir -p ./png/xmatrix/localized
+mkdir -p ./png/xmatrix/delocalized
 
+mkdir -p ./png/xmatrix/quad/localized
+mkdir -p ./png/xmatrix/quad/delocalized
 
 for FILE in *.xmatrix; do
 
@@ -66,11 +69,22 @@ set palette rgb 33,13,10
 #set yrange[0.001:1.00]
 #set xrange[2.50:3.00]
 
-set output "./png/xmatrix/localized_${FILE}.png" 
-plot  for[i=2:7] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
+set output "./png/xmatrix/localized/localized_${FILE}.png" 
+plot  for[i=2:9] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
 
-set output "./png/xmatrix/DELOCAL_${FILE}.png" 
-plot  for[i=7:12] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
+set output "./png/xmatrix/delocalized/DELOCAL_${FILE}.png" 
+plot  for[i=9:12] "${FILE}" using 1:i with lines title "State Nr.".(i-1)
+
+set logscale y
+set output "./png/xmatrix/quad/localized/localized_${FILE}.png" 
+plot  for[i=2:9] "${FILE}" using 1:(column(i)*column(i)) with lines title "State Nr.".(i-1)
+
+set output "./png/xmatrix/quad/delocalized/DELOCAL_${FILE}.png" 
+plot  for[i=9:12] "${FILE}" using 1:(column(i)*column(i)) with lines title "State Nr.".(i-1)
+
+
+
+
 
 EOF
 done

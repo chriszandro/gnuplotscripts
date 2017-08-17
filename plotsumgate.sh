@@ -29,6 +29,7 @@ set style line 80 lt rgb "#000000"
   set style line 4 lt rgb "#F25900" lw 2 pt 9
   set style line 5 lt rgb "#F25900" lw 1 pt 4
 
+  #set xrange [0-2:4-2]
 
 #PNG OUTPUT
 #------------------------------------------
@@ -42,50 +43,14 @@ set style line 80 lt rgb "#000000"
 
     # --- GRAPH Current
     set title "Current"
-    set xlabel "Voltage [V]"
+    set xlabel "Gate Voltage [V]"
     set ylabel "Current [muA ]"
     plot "${FILE}" using 1:3 with lines linestyle 2 
 
     # --- GRAPH Position
     set title "Position"
-    set xlabel "Voltage [V]"
-    set ylabel "Position [Bohr Radius]"
-    plot "${FILE}" using 1:2 with lines linestyle 3
-
-    # --- GRAPH 3
-    set title "Energy"
-    set xlabel "Voltage [V]"
-    set ylabel "Energy [eV]"
-    plot "${FILE}" using 1:4 with lines linestyle 4
-
-    # --- GRAPH d
-    set title "Occupation"
-    set xlabel "Voltage [V]"
-    set ylabel "n"
-    plot "${FILE}" using 1:5 with lines linestyle 1, "${FILE}" using 1:6 with lines linestyle 5
-
-unset multiplot
-
-#PDF OUTPUT
-#----------------------------------------------------    
-#    set term pdf font "Arial,4"
-    set term pdfcairo font "Arial,10"
-
-    set output "./pdf/${FILE}.pdf" 
-    set size 11,8.5
-     
-  set multiplot layout 2,2 rowsfirst title "${FILE}"
-
-    # --- GRAPH Current
-    set title "Current"
     set xlabel "Gate Voltage [V]"
-    set ylabel "Current [muA ]"
-    plot "${FILE}" using 1:3 with lines linestyle 2
-
-    # --- GRAPH Position
-    set title "Position"
     set ylabel "Position [Bohr Radius]"
-    set xlabel "Gate Voltage [V]"
     plot "${FILE}" using 1:2 with lines linestyle 3
 
     # --- GRAPH 3
@@ -96,12 +61,11 @@ unset multiplot
 
     # --- GRAPH d
     set title "Occupation"
-    set xlabel "Gate Voltage [V]"
+    set xlabel "Detuning Voltage [V]"
     set ylabel "n"
     plot "${FILE}" using 1:5 with lines linestyle 1, "${FILE}" using 1:6 with lines linestyle 5
 
 unset multiplot
-
 
 EOF
 done

@@ -28,8 +28,8 @@ set style line 80 lt rgb "#000000"
   set style line 3 lt rgb "#5060D0" lw 2 pt 2
   set style line 4 lt rgb "#F25900" lw 2 pt 9
   set style line 5 lt rgb "#F25900" lw 1 pt 4
+  
 
- 
 #PNG OUTPUT
 #------------------------------------------
  # set term png medium font arial 8
@@ -39,13 +39,12 @@ set style line 80 lt rgb "#000000"
   set size 2,2 
 
   set multiplot layout 2,2 rowsfirst title "${FILE}" 
-# set logscale y
     # --- GRAPH Current
     set title "Current"
     set xlabel "Voltage [V]"
     set ylabel "Current [muA ]"
     plot "${FILE}" using 1:3 with lines linestyle 2 
-# unset logscale y
+
     # --- GRAPH Position
     set title "Position"
     set xlabel "Voltage [V]"

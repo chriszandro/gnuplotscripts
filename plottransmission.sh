@@ -32,7 +32,7 @@ set style line 80 lt rgb "#000000"
     set title "${FILE}"
     set xlabel "Voltage [V]"
     set ylabel "Current [muV]"
-    plot "${FILE}" using 1:3 with lines linestyle 2 title "Current" 
+    plot "${FILE}" using 1:2 with lines linestyle 2 title "Current" 
 
 EOF
 done

@@ -1,7 +1,8 @@
 #bash/bin
 
 #Create Directories
-mkdir -p ./position3d
+mkdir -p ./pdf/rhox
+mkdir -p ./png/rhox
 
 #Console Input
 echo "3D Plotter in Matlab Style"
@@ -66,13 +67,15 @@ set style line 80 lt rgb "#000000"
 
 # Labels
 
+  set title "Potential surface of V(x)"
+ 
   #X Labels
-  set xlabel "Bias Voltage U [V]"
-  set ylabel "Gate Voltage V [V]"
-  set zlabel ""
+  set xlabel "Position x [a.u.]"
+  set ylabel "Voltage [V]"
+  set zlabel "Potential V(x)"
 
 # set xrange[-1.5:1.5]
-  #set yrange[1.5:2.5]
+# set yrange[1:1e6]
   set view ${xrot}, ${yrot}
   set key off
 
@@ -82,7 +85,7 @@ set style line 80 lt rgb "#000000"
 #------------------------------------------
 #   set term png medium font arial 8
     set term pngcairo font "Arial, 10"
-    set output "./position3d/rhox_${FILE}.png" 
+    set output "./png/rhox/rhox_${FILE}_xrot_${xrot}_yrot${yrot}.png" 
    
     splot "${FILE}" every :${resolution} using 1:2:3 with lines
 
